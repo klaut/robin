@@ -16,7 +16,7 @@
        end.to raise_error(RedisResourceError)
      end
 
-     it 'raises exception is bad url' do
+     it 'raises exception if bad url' do
        RedisService.stub(:init_redis_if_valid) { raise ArgumentError }
        expect do
          redis = RedisService.for_url "bad"
