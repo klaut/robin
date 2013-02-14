@@ -4,21 +4,20 @@
 
    context "connecting to redis" do
      it 'returns redis service object if valid url' do
-       Redis.should_receive(:new).with(anything).and_return(stub)
+       RedisService.stub(:init_redis_if_valid) {stub}
        redis = RedisService.for_url "good" 
        redis.should be_instance_of RedisService
      end
 
      it 'raises exception if wrong protocol' do
-       Redis.should_receive(:new).with(anything).and_raise(Redis::ProtocolError.new "message") 
-       url = "wrong"
+       RedisService.stub(:init_redis_if_valid) { raise Redis::ProtocolError }
        expect do
-         redis = RedisService.for_url url
+         redis = RedisService.for_url "wrong"
        end.to raise_error(RedisResourceError)
      end
 
      it 'raises exception is bad url' do
-       Redis.should_receive(:new).with(anything).and_raise(ArgumentError.new "message")
+       RedisService.stub(:init_redis_if_valid) { raise ArgumentError }
        expect do
          redis = RedisService.for_url "bad"
        end.to raise_error(RedisResourceError)
