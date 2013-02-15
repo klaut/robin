@@ -13,14 +13,27 @@
        RedisService.stub(:init_redis_if_valid) { raise Redis::ProtocolError }
        expect do
          redis = RedisService.for_url "http://google.com"
-       end.to raise_error(RedisResourceError)
+       end.to raise_error(RedisService::ResourceError)
      end
 
      it 'raises exception if bad url' do
        RedisService.stub(:init_redis_if_valid) { raise ArgumentError }
        expect do
          redis = RedisService.for_url "bad"
-       end.to raise_error(RedisResourceError)
+       end.to raise_error(RedisService::ResourceError)
+     end
+   end
+
+   context "interracting with redis" do
+     subject {RedisService.for_url "test"}
+     let(:redis) { stub(keys:["1:a", "2:b"], type:"list", ping:'pong')}
+     before do
+       Redis.stub(:new).and_return(redis)
+     end 
+
+     it "returns keys with types" do
+       keys = subject.keys
+       keys.should == [{name:'1:a', type:'list'}, {name:'2:b', type:'list'}]
      end
    end
 

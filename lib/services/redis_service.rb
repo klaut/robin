@@ -2,17 +2,24 @@ require 'redis'
 
 class RedisService
 
+  class ResourceError < Exception ; end
+
   def self.for_url(url)
     begin
       new init_redis_if_valid(url)
     rescue Redis::ProtocolError, ArgumentError
-      raise RedisResourceError.new
+      raise ResourceError.new
     end
   end
 
-
   def initialize(redis_client)
-    @redis_client = redis_client
+    @client = redis_client
+  end
+  
+  def keys
+    @client.keys.map do |key|
+      {name: key, type: @client.type(key)}
+    end
   end
 
   private
@@ -24,4 +31,3 @@ class RedisService
 
 end
 
-class RedisResourceError < Exception ; end
