@@ -19,3 +19,5 @@ end
 World do
   RobinWorld.new
 end
+
+REDIS_TEST_URL = "redis://127.0.0.1:6379/1"
