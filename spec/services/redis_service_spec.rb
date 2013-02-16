@@ -24,17 +24,4 @@
      end
    end
 
-   context "interracting with redis" do
-     subject {RedisService.for_url "test"}
-     let(:redis) { stub(keys:["1:a", "2:b"], type:"list", ping:'pong')}
-     before do
-       Redis.stub(:new).and_return(redis)
-     end 
-
-     it "returns keys with types" do
-       keys = subject.keys
-       keys.should == [{name:'1:a', type:'list'}, {name:'2:b', type:'list'}]
-     end
-   end
-
  end
