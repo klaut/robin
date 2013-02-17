@@ -2,7 +2,7 @@ require 'redis'
 
 class RedisService
 
-  class ResourceError < Exception ; end
+  class ResourceError < RuntimeError ; end
 
   def self.for_url(url)
     begin
