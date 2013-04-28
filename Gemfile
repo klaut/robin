@@ -1,16 +1,22 @@
-source :rubygems
+source 'https://rubygems.org'
 
 #tell heroku ruby version
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'sinatra', '1.3.4'
+gem 'sinatra'
 gem 'thin'
-gem 'json', '1.7.7'
+gem 'json'
 gem 'redis'
 
+group :development do
+  gem 'rspec'
+  gem 'shotgun'
+end
 # testing
-gem 'rspec', '2.12'
-gem 'rack-test'
-gem 'cucumber'
-gem 'capybara'
-gem 'cucumber-sinatra'
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+  gem 'cucumber'
+  gem 'capybara'
+  gem 'cucumber-sinatra'
+end

@@ -15,7 +15,7 @@ class Manager
     @service = nil
   end
 
-  def list_keys
+  def get_keys
     service.keys
   end
 end

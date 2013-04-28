@@ -17,7 +17,7 @@ When /^redis has data$/ do
 end
 
 Then /^I see all the keys and their types$/ do
-  @redis_manager.list_keys.should == [{name:'1:a', type:'string'}]
+  @redis_manager.get_keys.should == [{name:'1:a', type:'string'}]
 end
 
 When /^redis is empty$/ do
@@ -25,5 +25,5 @@ When /^redis is empty$/ do
 end
 
 Then /^I don't see any keys$/ do
-  @redis_manager.list_keys.should == []
+  @redis_manager.get_keys.should == []
 end

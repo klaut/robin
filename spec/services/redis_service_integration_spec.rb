@@ -24,7 +24,7 @@ describe RedisService do
         @test_redis.lpush '1:a', 'another'
       end
       keys = subject.keys
-      keys.should == [{name:'1:a', type:'list'}, {name:'2:b', type:'string'}]
+      keys.should == [{name:'2:b', type:'string'},{name:'1:a', type:'list'}]
     end
   end
 end

@@ -1,0 +1,14 @@
+[
+{"name": "this:is:my:first:key:123455", "type":"string"},
+{"name": "this:is:my:second:key:123455", "type":"list"},
+{"name": "this:is:my:third:key:123455", "type":"string"},
+{"name": "this:is:my:fourth:key:123455", "type":"list"},
+{"name": "this:is:my:fifth:key:123455", "type":"hash"},
+{"name": "this:is:my:sixth:key:123455", "type":"hash"},
+{"name": "this:is:my:seventh:key:123455", "type":"string"},
+{"name": "this:is:my:eighth:key:123455", "type":"string"},
+{"name": "this:is:my:ninth:key:123455", "type":"list"},
+{"name": "this:is:my:tenth:key:123455", "type":"set"},
+{"name": "this:is:my:eleventh:key:123455", "type":"zset"},
+{"name": "this:is:my:twelveth:key:123455", "type":"string"}
+]

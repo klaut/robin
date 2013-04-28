@@ -1,0 +1,49 @@
+  <!-- <div class="masthead"> -->
+  <!--   <h3 class="muted">Robin - the redis explorer</h3> -->
+  <!--   <div class="navbar"> -->
+  <!--     <div class="navbar-inner"> -->
+  <!--       <div class="container"> -->
+  <!--         <ul class="nav"> -->
+  <!--           <li class="active"><a href="#">Home</a></li> -->
+  <!--           <li><a href="#">Projects</a></li> -->
+  <!--           <li><a href="#">Services</a></li> -->
+  <!--           <li><a href="#">About</a></li> -->
+  <!--           <li><a href="#">Contact</a></li> -->
+  <!--         </ul> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div>/.navbar --> 
+  <!-- </div> -->
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#redis-keys" data-toggle="tab">Keys</a></li>
+    <li><a href="#stats" data-toggle="tab">Stats</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="redis-keys">
+      <div class="accordion" id="redis-keys-accordion">
+        <% keys.each_with_index do |key, i| %> 
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#redis-keys-accordion" href="#key-<%= i %>">
+                <%= key[:name] %> <span class="badge pull-right key-type"><%= key[:type] %></span>
+              </a>
+            </div>
+            <div id="key-<%= i %>" class="accordion-body collapse" style="height: 0px; ">
+              <div class="accordion-inner">
+                 <%= key[:name] %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane" id="stats">
+      <p>Here be stats.</p>
+    </div>
+  </div>
+</div>
+
+
